@@ -60,7 +60,7 @@ cartAddBtn.forEach((btn) => {
       console.log(partPath);
 
       const item = {};
-      item.img = `img-cart${partPath}`;
+      item.img = `img${partPath}`;
 
       let name =
         event.target.parentElement.parentElement.nextElementSibling.children[0]
@@ -73,7 +73,7 @@ cartAddBtn.forEach((btn) => {
       let finalPrice = price.slice(1).trim();
 
       item.price = finalPrice;
-
+      console.log(item.price);
       const cartItem = document.createElement("div");
 
       cartItem.classList.add(
@@ -84,9 +84,9 @@ cartAddBtn.forEach((btn) => {
         "my-3"
       );
 
-      cartItem.innerHTML = `<div class="cart-item d-flex justify-content-between text-capitalize my-3"><img src="${item.img}" class="img-fluid rounded-circle" id="item-img" alt="">
+      cartItem.innerHTML = `<div class="cart-item d-flex justify-content-between text-capitalize my-3"><img src="${item.img}" class="img-fluid rounded-circle item-img" id="item-img" alt="">
       <div class="item-text"><p id="cart-item-title" class="font-weight-bold mb-0">${item.name}</p><span>$</span>
-        <span id="cart-item-price" class="cart-item-price" class="mb-0">${item.price}</span></div><a href="#" id='cart-item-remove' class="cart-item-remove"><i class="fas fa-trash"></i></a></div>`;
+        <span id="cart-item-price" class="cart-item-price content" class="mb-0">${item.price}</span></div><a href="#" id='cart-item-remove' class="cart-item-remove"><i class="fas fa-trash"></i></a></div>`;
 
       cart.insertBefore(cartItem, total);
       alert("Item added to the cart");
@@ -102,15 +102,15 @@ function showTotal() {
 
   items.forEach((item) => {
     total.push(parseFloat(item.textContent));
-    // console.log(item.textContent);
+    console.log(item);
   });
-  console.log(total);
+  // console.log(total);
 
   const totalMoney = total.reduce((total, item) => {
     total += item;
     return total;
   }, 0);
-  console.log(totalMoney);
+  // console.log(totalMoney);
   const finalAmount = totalMoney.toFixed(2);
 
   document.getElementById("cart-total").textContent = finalAmount;
